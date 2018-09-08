@@ -14,17 +14,18 @@
     "watchman-babel"
   ],
   "version": "0.0.1",
-  "description": "",
+  "description": "React integration for dot-event",
   "keywords": [
-    ""
+    "dot-event",
+    "react"
   ],
-  "author": " <>",
+  "author": "dot-event <oss@dot-event.io>",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com//.git"
+    "url": "git+ssh://git@github.com/dot-event/react.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com//#readme",
+  "homepage": "https://github.com/dot-event/react#readme",
   "dependencies": {
     "@babel/runtime": "7.0.0"
   },
