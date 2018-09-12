@@ -16,22 +16,11 @@ This integration provides a [React context](https://reactjs.org/docs/context.htm
 
 Additionally, any emit triggers a [`forceRender()`](https://reactjs.org/docs/react-component.html#forceupdate) at the top level, leaving it to your [`shouldComponentUpdate()`](https://reactjs.org/docs/react-component.html#shouldcomponentupdate) function to decide whether it should update or not.
 
-## Create a "provider composer"
+## Events composer
 
-Pass an [events composer](#events-composer) to `withEventsProvider`, which returns a [provider composer](#provider-composer):
+First we need a way to build the dot-event instance in a way that the provider can reuse.
 
-```js
-import Events from "dot-event"
-import { withEventsProvider } from "dot-event-react"
-
-export default withEventsProvider(Events.composer)
-```
-
-Later we use this provider composer to wrap a React component.
-
-### Events composer
-
-In the previos example, we used `Events.composer`, the default dot-event composer. It looks something like this:
+Luckily `dot-event` provides a default events composer. It looks something like this:
 
 ```js
 function composer({ events = new Events(), state } = {}) {
@@ -40,17 +29,30 @@ function composer({ events = new Events(), state } = {}) {
 }
 ```
 
-Drop in your own events composer if you need to customize the dot-event instance.
+Feel free to create own events composer if you need to customize the dot-event instance.
 
-The `state` object is a way to attach state to your events instance. Some extensions, like [dot-store](github.com/dot-store/core), utilize the state object.
+### Events composer state
 
-### Next.js
+The `state` object in the events composer exists as a means to attach state to your events instance. Some extensions, like [dot-store](github.com/dot-store/core), utilize the state object.
 
-If you're using [Next.js](https://github.com/zeit/next.js), the provider utilizes `getInitialProps` to pass state from server to client.
+If you're using [Next.js](https://github.com/zeit/next.js), the provider utilizes `getInitialProps()` to pass state from server to client.
+
+## Provider composer
+
+Pass your [events composer](#events-composer) to `withEventsProvider()` to create a [provider composer](#provider-composer):
+
+```js
+import Events from "dot-event"
+import { withEventsProvider } from "dot-event-react"
+
+export default withEventsProvider(Events.composer)
+```
+
+Later we will use this provider composer to wrap a React component.
 
 ## Add the consumer
 
-Pass a component to `withEvents()` to add the consumer to create a provider composer:
+Here we add the consumer to a component and pass it to the events provider we created earlier:
 
 ```js
 import React from "react"
