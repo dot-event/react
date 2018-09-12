@@ -42,7 +42,7 @@ function composer({ events = new Events(), state } = {}) {
 
 Drop in your own events composer if you need to customize the dot-event instance.
 
-The `state` object is a way to attach state to your events instance. Some extensions, like [dot-store](github.com/dot-store/core) utilize the state object.
+The `state` object is a way to attach state to your events instance. Some extensions, like [dot-store](github.com/dot-store/core), utilize the state object.
 
 ### Next.js
 
