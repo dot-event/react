@@ -50,7 +50,7 @@ If you're using [Next.js](https://github.com/zeit/next.js), the provider utilize
 
 ## Add the consumer
 
-Pass a component to `withEvents()` to add the consumer, then wrap that with the [provider composer](#create-a-provider-composer):
+Pass a component to `withEvents()` to add the consumer to create a provider composer:
 
 ```js
 import React from "react"
