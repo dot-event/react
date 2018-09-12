@@ -52,7 +52,7 @@ If you're using [Next.js](https://github.com/zeit/next.js), the provider uses `g
 
 ## Provider composer
 
-Pass your [events composer](#events-composer) to `withEventsProvider()` to create a [provider composer](#provider-composer):
+Pass your [events composer](#events-composer) to `withEventsProvider()` to create a provider composer:
 
 ```js
 import Events from "dot-event"
@@ -63,7 +63,7 @@ export default withEventsProvider(Events.composer)
 
 ## Add the consumer
 
-Add the consumer to a component using `withEvents()` and pass it to the events provider we created above:
+Add the consumer to a component using `withEvents()` and pass it to the [provider composer](#provider-composer) we created above:
 
 ```js
 import React from "react"
