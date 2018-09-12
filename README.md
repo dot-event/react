@@ -12,15 +12,28 @@ npm install --save dot-event dot-event-react
 
 ## What it does
 
-This integration provides a [React context](https://reactjs.org/docs/context.html) [provider](https://reactjs.org/docs/context.html#provider) and [consumer](https://reactjs.org/docs/context.html#consumer) that passes the dot-event instance down to any component.
+This integration provides a [React context](https://reactjs.org/docs/context.html) provider and consumer that passes the dot-event instance down to any component.
 
-Additionally, any emit triggers a [`forceRender()`](https://reactjs.org/docs/react-component.html#forceupdate) at the top level, leaving it to your [`shouldComponentUpdate()`](https://reactjs.org/docs/react-component.html#shouldcomponentupdate) function to decide whether it should update or not.
+### Higher order components
+
+We add the provider and the consumer to your component chain via [higher order component](https://reactjs.org/docs/higher-order-components.html) "composers". Most of the examples below walk you through using the composers.
+
+### Re-render on emit
+
+Additionally, any dot-event emit triggers a [`forceRender()`](https://reactjs.org/docs/react-component.html#forceupdate) from the provider, leaving it to your child components' [`shouldComponentUpdate()`](https://reactjs.org/docs/react-component.html#shouldcomponentupdate) function to decide whether they should render.
 
 ## Events composer
 
-First we need a way to build the dot-event instance in a way that the provider can reuse.
+First we need a way to create the dot-event instance in a way that the provider can reuse.
 
-Luckily `dot-event` provides a default events composer. It looks something like this:
+Luckily `dot-event` provides a default events composer:
+
+```js
+import Events from "dot-events"
+Events.composer() // returns a new Events instance
+```
+
+Just in case you're wondering, the default events composer looks like this:
 
 ```js
 function composer({ events = new Events(), state } = {}) {
@@ -29,13 +42,13 @@ function composer({ events = new Events(), state } = {}) {
 }
 ```
 
-Feel free to create own events composer if you need to customize the dot-event instance.
+Feel free to create your own events composer to customize the dot-event instance.
 
 ### Events composer state
 
 The `state` object in the events composer exists as a means to attach state to your events instance. Some extensions, like [dot-store](github.com/dot-store/core), utilize the state object.
 
-If you're using [Next.js](https://github.com/zeit/next.js), the provider utilizes `getInitialProps()` to pass state from server to client.
+If you're using [Next.js](https://github.com/zeit/next.js), the provider uses `getInitialProps()` to pass state from server to client.
 
 ## Provider composer
 
@@ -48,11 +61,9 @@ import { withEventsProvider } from "dot-event-react"
 export default withEventsProvider(Events.composer)
 ```
 
-Later we will use this provider composer to wrap a React component.
-
 ## Add the consumer
 
-Here we add the consumer to a component and pass it to the events provider we created earlier:
+Add the consumer to a component using `withEvents()` and pass it to the events provider we created above:
 
 ```js
 import React from "react"
@@ -71,6 +82,15 @@ class Component extends React.Component {
 
 export default withEventsProvider(withEvents(Component))
 ```
+
+## Summary
+
+1. Create an events composer or use the default one (`Events.composer`)
+2. Pass the events composer to `withEventsProvider()` to create a provider composer
+3. Pass a component to `withEvents()` to add the consumer
+4. Pass the component with the consumer to the provider composer to create the final component chain
+
+Read more about [React context](https://reactjs.org/docs/context.html) if you're not sure how the provider/consumer relationship works.
 
 ## dot-store
 
