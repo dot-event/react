@@ -18,7 +18,7 @@ Additionally, any emit triggers a [`forceRender()`](https://reactjs.org/docs/rea
 
 ## Create a "provider composer"
 
-Pass an [events composer](#events-composer) to `withEventsProvider()` composer, which returns a [provider composer](#provider-composer):
+Pass an [events composer](#events-composer) to `withEventsProvider`, which returns a [provider composer](#provider-composer):
 
 ```js
 import Events from "dot-event"
@@ -27,11 +27,11 @@ import { withEventsProvider } from "dot-event-react"
 export default withEventsProvider(Events.composer)
 ```
 
-Later we will pass a React component to the provider composer we exported here.
+Later we use this provider composer to wrap a React component.
 
 ### Events composer
 
-`Events.composer` is the default dot-event composer. It looks something like this:
+In the previos example, we used `Events.composer`, the default dot-event composer. It looks something like this:
 
 ```js
 function composer({ events = new Events(), state } = {}) {
