@@ -26,7 +26,7 @@ Additionally, any dot-event emit triggers a [`forceRender()`](https://reactjs.or
 
 First we need a way to create the dot-event instance in a way that the provider can reuse.
 
-Luckily `dot-event` provides a default events composer:
+Luckily dot-event provides a default events composer:
 
 ```js
 import Events from "dot-events"
@@ -105,14 +105,13 @@ Example with [dot-store](github.com/dot-store/core) that takes advantage of serv
 
 ```js
 import React from "react"
-import Events from "dot-event"
 import composeStore from "dot-store"
 import {
   withEvents,
   withEventsProvider,
 } from "dot-event-react"
 
-const store = composeStore(new Events())
+const store = composeStore()
 
 class Component extends React.Component {
   static async getInitialProps({ store }) {
