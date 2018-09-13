@@ -27,7 +27,8 @@
   "license": "MIT",
   "homepage": "https://github.com/dot-event/react#readme",
   "dependencies": {
-    "@babel/runtime": "7.0.0"
+    "@babel/runtime": "7.0.0",
+    "dot-event": "^0.4.0"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0",
@@ -39,8 +40,6 @@
     "@babel/preset-react": "7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.6",
-    "dot-event": "^0.4.0",
-    "dot-store": "^0.3.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^5.2.0",
