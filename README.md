@@ -105,11 +105,14 @@ Example with [dot-store](github.com/dot-store/core) that takes advantage of serv
 
 ```js
 import React from "react"
-import Store from "dot-store"
+import Events from "dot-event"
+import composeStore from "dot-store"
 import {
   withEvents,
   withEventsProvider,
 } from "dot-event-react"
+
+const store = composeStore(new Events())
 
 class Component extends React.Component {
   static async getInitialProps({ store }) {
@@ -121,7 +124,7 @@ class Component extends React.Component {
   }
 }
 
-export default withEventsProvider(Store.composer)(
+export default withEventsProvider(store)(
   withEvents(Component)
 )
 ```
