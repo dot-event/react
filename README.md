@@ -33,20 +33,27 @@ import Events from "dot-events"
 Events.composer() // returns a new Events instance
 ```
 
-Just in case you're wondering, the default events composer looks like this:
+The default events composer looks like this:
 
 ```js
-function composer({ events = new Events(), state } = {}) {
-  events.setState(state)
+function composer(events = new Events()) {
   return events
 }
 ```
 
 Feel free to create your own events composer to customize the dot-event instance.
 
-### Events composer state
+### Events state
 
-The `state` object in the events composer exists as a means to attach state to your events instance. Some extensions, like [dot-store](github.com/dot-store/core), utilize the state object.
+Dot-event takes a `state` option in its constructor:
+
+```js
+import Events from "dot-events"
+const events = new Events({ state: {} })
+events.state // {}
+```
+
+The state object allows extensions like [dot-store](github.com/dot-store/core) to persist state.
 
 If you're using [Next.js](https://github.com/zeit/next.js), the provider uses `getInitialProps()` to pass state from server to client.
 
