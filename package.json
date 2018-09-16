@@ -28,7 +28,7 @@
   "homepage": "https://github.com/dot-event/react#readme",
   "dependencies": {
     "@babel/runtime": "7.0.0",
-    "dot-event": "^0.7.0"
+    "dot-event": "^0.7.1"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0",
