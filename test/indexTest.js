@@ -10,8 +10,9 @@ import {
 
 class Component extends React.Component {
   componentDidMount() {
-    setTimeout(() => {
-      this.props.events.emit()
+    setTimeout(async () => {
+      await this.props.events.emit()
+      await this.props.events.emit("finished")
     }, 10)
   }
 
@@ -32,13 +33,13 @@ test("calls forceUpdate on emit", async () => {
 
   mount(<ComponentWithEvents />)
 
-  await events.onceEmitted("after")
+  await events.onceEmitted("finished")
 
   expect(
     EventsProvider.prototype.forceUpdate
   ).toHaveBeenCalledTimes(1)
 
   expect(Component.prototype.render).toHaveBeenCalledTimes(
-    1
+    2
   )
 })
