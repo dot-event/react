@@ -13,7 +13,7 @@
     "jest-scripts",
     "watchman-babel"
   ],
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "React integration for dot-event",
   "keywords": [
     "dot-event",
