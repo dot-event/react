@@ -28,7 +28,7 @@
   "homepage": "https://github.com/dot-event/react#readme",
   "dependencies": {
     "@babel/runtime": "7.0.0",
-    "dot-event": "^1.1.2"
+    "dot-event": "^1.2.0"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0",
@@ -47,10 +47,10 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.10.0",
     "husky": "1.0.0-rc.13",
-    "jest": "23.4.2",
+    "jest": "23.6.0",
     "lint-staged": "^7.2.0",
     "prettier": "^1.14.0",
-    "react": "^16.5.0",
+    "react": "^16.5.2",
     "react-dom": "^16.5.0",
     "rimraf": "^2.6.2"
   },
