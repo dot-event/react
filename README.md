@@ -1,13 +1,13 @@
-# dot-event-react
+# @dot-event/react
 
 React integration for dot-event.
 
-![dot-event-react](https://media.giphy.com/media/lasKf9ImRHtbG/giphy.gif)
+![@dot-event/react](https://media.giphy.com/media/lasKf9ImRHtbG/giphy.gif)
 
 ## Install
 
 ```bash
-npm install --save dot-event dot-event-react
+npm install --save dot-event @dot-event/react
 ```
 
 ## What it does
@@ -53,7 +53,7 @@ const events = new Events({ state: {} })
 events.state // {}
 ```
 
-The state object allows extensions like [dot-store](github.com/dot-store/core) to persist state.
+The state object allows extensions like [@dot-event/store](github.com/@dot-event/store/core) to persist state.
 
 If you're using [Next.js](https://github.com/zeit/next.js), the provider uses `getInitialProps()` to pass state from server to client.
 
@@ -63,7 +63,7 @@ Pass your [events composer](#events-composer) to `withEventsProvider()` to creat
 
 ```js
 import Events from "dot-event"
-import { withEventsProvider } from "dot-event-react"
+import { withEventsProvider } from "@dot-event/react"
 
 export default withEventsProvider(Events.composer)
 ```
@@ -74,7 +74,7 @@ Add the consumer to a component using `withEvents()` and pass it to the [provide
 
 ```js
 import React from "react"
-import { withEvents } from "dot-event-react"
+import { withEvents } from "@dot-event/react"
 import withEventsProvider from "./withEventsProvider"
 
 class Component extends React.Component {
@@ -99,17 +99,17 @@ export default withEventsProvider(withEvents(Component))
 
 Read more about [React context](https://reactjs.org/docs/context.html) if you're not sure how the provider/consumer relationship works.
 
-## dot-store
+## @dot-event/store
 
-Example with [dot-store](github.com/dot-store/core) that takes advantage of server side state:
+Example with [@dot-event/store](github.com/@dot-event/store/core) that takes advantage of server side state:
 
 ```js
 import React from "react"
-import composeStore from "dot-store"
+import composeStore from "@dot-event/store"
 import {
   withEvents,
   withEventsProvider,
-} from "dot-event-react"
+} from "@dot-event/react"
 
 const store = composeStore()
 

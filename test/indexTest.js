@@ -1,5 +1,5 @@
 import dotEvent from "dot-event"
-import dotStore from "dot-store"
+import dotStore from "@dot-event/store"
 
 import React from "react"
 import { mount } from "enzyme"
@@ -28,7 +28,7 @@ test("calls forceUpdate on emit", async () => {
 
   const ComponentWithEvents = withEventsProvider(state => ({
     events,
-    store: dotStore(events, state),
+    store: dotStore({ events, state }),
   }))(withEvents(Component))
 
   jest.spyOn(EventsProvider.prototype, "forceUpdate")
