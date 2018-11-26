@@ -26,10 +26,9 @@ class Component extends React.Component {
 test("calls forceUpdate on emit", async () => {
   const events = dotEvent()
 
-  const ComponentWithEvents = withEventsProvider(state => ({
-    events,
-    store: dotStore({ events, state }),
-  }))(withEvents(Component))
+  const ComponentWithEvents = withEventsProvider(
+    ({ state }) => dotStore({ events, state })
+  )(withEvents(Component))
 
   jest.spyOn(EventsProvider.prototype, "forceUpdate")
   jest.spyOn(Component.prototype, "render")
